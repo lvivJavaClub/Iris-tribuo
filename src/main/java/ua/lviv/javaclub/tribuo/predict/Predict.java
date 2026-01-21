@@ -19,15 +19,19 @@ public class Predict {
                 modelPath
         );
 
-//        ArrayExample(numFeatures=4,output=Iris-setosa,weight=1.0,
-//        features=[ (petalLength, 1.3), (petalWidth, 0.3), (sepalLength, 4.5), (sepalWidth, 2.3), ])
         var example = new ArrayExample<>(
                 new Label("UNKNOWN") // dummy label, ignored in prediction
         );
-        example.add(new Feature("sepalLength", 4.5));
-        example.add(new Feature("sepalWidth", 2.3));
-        example.add(new Feature("petalLength", 1.3));
-        example.add(new Feature("petalWidth", 0.3));
+
+//        ArrayExample(numFeatures=6,output=1,weight=1.0,
+//        features=[(amount, 406864.17)(newbalanceDest, 0.0), (newbalanceOrig, 0.0), (oldbalanceDest, 0.0), (oldbalanceOrg, 406864.17), (step, 571.0), ])
+
+        example.add(new Feature("step", 571.0));
+        example.add(new Feature("amount", 406864.17));
+        example.add(new Feature("oldbalanceOrg", 406864.17));
+        example.add(new Feature("newbalanceOrig", 0.0));
+        example.add(new Feature("oldbalanceDest", 0.0));
+        example.add(new Feature("newbalanceDest", 0.0));
 
         var prediction = model.predict(example);
         System.out.println("Predicted label: " + prediction.getOutput().getLabel());

@@ -2,7 +2,7 @@
 
 This project demonstrates how to use the Iris dataset with Tribuo.
 
-## Download and Setup
+## Download iris
 
 You can manually download and extract the data:
 1. Download the data from: https://archive.ics.uci.edu/static/public/53/iris.zip
@@ -12,7 +12,21 @@ Alternatively, use the following bash command:
 ```bash
   rm -rf data && mkdir -p data \
     && curl -L https://archive.ics.uci.edu/static/public/53/iris.zip -o data/iris.zip \
-    && unzip data/iris.zip -d data && rm data/iris.zip
+    && unzip data/iris.zip -d data \
+    && rm data/iris.zip
+```
+
+## Download fraud-detection
+You can manually download and extract the data:
+1. Download the data from: https://www.kaggle.com/api/v1/datasets/download/pranavrawat1301/fraud-detection
+2. Extract the contents of the zip file into a folder named `data` in the project root.
+
+Alternatively, use the following bash command:
+```bash
+  rm -rf data && mkdir -p data \
+    && curl -L https://www.kaggle.com/api/v1/datasets/download/pranavrawat1301/fraud-detection -o data/fraud-detection.zip \
+    && unzip data/fraud-detection.zip -d data \
+    && rm data/fraud-detection.zip
 ```
 
 ## Training the Model
