@@ -26,15 +26,22 @@ Alternatively, use the following bash command:
   rm -rf data && mkdir -p data \
     && curl -L https://www.kaggle.com/api/v1/datasets/download/pranavrawat1301/fraud-detection -o data/fraud-detection.zip \
     && unzip data/fraud-detection.zip -d data \
+    && mv data/fraud-detection.csv data/Fraud.csv \
     && rm data/fraud-detection.zip
 ```
 
 ## Training the Model
 
-To train the model, run the `TrainModel` class. This will load the Iris dataset, split it into training and testing sets, train a LibLinear model, evaluate its performance, and save the model to `models/model.tribuo`.
+Before training the model, ensure that the project is built:
 
 ```bash
-mvn exec:java -Dexec.mainClass="ua.lviv.javaclub.tribuo.training.TrainModel"
+mvn clean install
+```
+
+To train the model, run the `TrainModel` class. This will load the fraud detection dataset, split it into training and testing sets, train an XGBoost model, evaluate its performance, and save the model to `models/model.tribuo`.
+
+```bash
+mvn exec:java -Dexec.mainClass=ua.lviv.javaclub.tribuo.training.TrainModel
 ```
 
 ## Making Predictions
@@ -42,5 +49,5 @@ mvn exec:java -Dexec.mainClass="ua.lviv.javaclub.tribuo.training.TrainModel"
 Once the model is trained and saved, you can use the `Predict` class to make predictions on new data.
 
 ```bash
-mvn exec:java -Dexec.mainClass="ua.lviv.javaclub.tribuo.predict.Predict"
+mvn exec:java -Dexec.mainClass=ua.lviv.javaclub.tribuo.predict.Predict
 ```

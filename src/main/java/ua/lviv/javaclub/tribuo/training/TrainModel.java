@@ -28,7 +28,11 @@ public class TrainModel {
     public static void cleanup() throws IOException {
         System.out.println("cleanup started");
 
-        Path input = Paths.get("data/Fraud.csv");
+        Path input = Paths.get("./data/Fraud.csv");
+        if (!Files.exists(input)) {
+            System.err.println("Error: data/Fraud.csv not found. Please download the dataset as described in README.MD.");
+            System.exit(1);
+        }
         Path output = Paths.get("data/Fraud_noheader.csv");
 
         try (BufferedReader reader = Files.newBufferedReader(input);
